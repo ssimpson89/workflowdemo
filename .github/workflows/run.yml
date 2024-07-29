@@ -7,14 +7,12 @@ jobs:
     steps:
       - name: Get git
         uses: actions/checkout@v4
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with: 
           node-version: "18"
-      
       - name: install dependency
+        needs: 
         run: npm ci    
-    
       - name: install dependency
         run: npm lint
