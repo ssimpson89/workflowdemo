@@ -1,0 +1,9 @@
+
+name: Demo Runner
+on: [push,workflow_dispatch]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Hello
+        run: echo "Hello World!"
