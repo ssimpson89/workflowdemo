@@ -5,5 +5,16 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello
-        run: echo "Hello World!"
+      - name: Get git
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: "18"
+      
+      - name: install dependency
+        run: npm ci    
+    
+      - name: install dependency
+        run: npm lint
