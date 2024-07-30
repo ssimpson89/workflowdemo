@@ -15,7 +15,33 @@ jobs:
         run: npm ci    
       - name: lint it
         run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    needs: "lint"
+    steps:
+      - name: Get git
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: "18"
+      - name: install dependency
+        run: npm ci      
       - name: test it
         run: npm run test
+
+  build:
+    runs-on: ubuntu-latest
+    needs: "test"
+    steps:
+      - name: Get git
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with: 
+          node-version: "18"
+      - name: install dependency
+        run: npm ci      
       - name: build it
         run: npm run build
